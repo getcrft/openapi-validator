@@ -13,25 +13,7 @@ module.exports.validate = function({ jsSpec }) {
   const messages = new MessageCarrier();
 
   const swagger = jsSpec.swagger;
-
-  if (!swagger) {
-    messages.addMessage(
-      ['swagger'],
-      'API definition must have an `swagger` field',
-      'error'
-    );
-  } else if (typeof swagger !== 'string') {
-    messages.addMessage(
-      ['swagger'],
-      'API definition must have an `swagger` field as type string',
-      'error'
-    );
-  } else if (swagger !== '2.0') {
-    messages.addMessage(
-      ['swagger'],
-      '`swagger` string must have the value `2.0`',
-      'error'
-    );
-  }
+  // we don't actually care about swagger docs specifically
+  // so remove this from the locked built-in ruleset
   return messages;
 };
